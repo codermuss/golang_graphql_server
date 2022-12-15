@@ -1,0 +1,40 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type Video {
+  id: ID!
+  title: String!
+  url: String!
+  author: User!
+}
+
+type User {
+  id: ID!
+  name: String!
+}
+
+type Query {
+  """
+  Deneme
+  """
+  videos: [Video!]!
+  authors: [User!]!
+  author(id: ID!): User!
+}
+
+input NewAuthor {
+  id: ID!
+  name: String!
+}
+
+input NewVideo {
+  title: String!
+  url: String!
+  userId: String!
+}
+
+type Mutation {
+  createAuthor(input: NewAuthor!): User!
+  createVideo(input: NewVideo!): Video!
+}
